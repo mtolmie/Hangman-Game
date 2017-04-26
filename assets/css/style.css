@@ -1,187 +1,39 @@
-/* Variabes */  
-$orange: #ffa600;
-$green: #c1d72e;
-$blue: #82d2e5;
-$grey:#f3f3f3;
-$white: #fff;
-$base-color:$green ;
-
-/* Mixin's */ 
-
-@mixin transition {
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+* {
+    box-sizing: border-box;
 }
-
-@mixin clear {
-  &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-}
-
- @mixin box-size {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
- @mixin transition {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-@mixin fade {
-  -moz-transition: all 1s ease-in;
-  -moz-transition:all 0.3s ease-in-out;
-  -webkit-transition:all 0.3s ease-in-out;
-}
-
-@mixin opacity {
-  opacity:0.4;
-  filter:alpha(opacity=40); 
-  @include fade;
-}
-
-@mixin corners ($radius) {
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-  border-radius: $radius; 
-  -khtml-border-radius: $radius; 
-}
-
 body {
-  background:$base-color;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  color:$white;
-  height:100%;
-  text-align:center;
-  font-size:18px;
+    font-family: sans-serif;
 }
-
-.wrappper{
-  @include clear;
-  width:100%;
-  margin:0 auto;
+/* Keep it simple - improvement would be to not display characters */
+ .letter {
+    display: inline-block;
+    list-style: none;
+    width: 20px;
+    margin: 0 5px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    color: white;
 }
-
-
-canvas{
-  color:$white;
-  border: $white dashed 2px;
-  padding:15px;
+.current-word {
+    list-style: none;
 }
-
-h1, h2, h3 {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 100;
-	text-transform: uppercase;
-   margin:5px 0;
+.output {
+    opacity: 0;
+    transition: opacity 1s ease;
 }
-
-h1 {
-	font-size: 2.6em;
+.correct {
+    background-color: green;
+    transition: all 1s ease;
 }
-
-h2 {
-	font-size: 1.6em;
+.error {
+    color: red;
+    opacity: 1;
 }
-
-p{
-  font-size: 1.6em;
+.warning {
+    color: orange;
+    opacity: 1;
 }
-
-#alphabet {
-  @include clear;
-  margin:15px auto;
-  padding:0;
-  max-width:900px;
+.win {
+    color: green;
+    opacity: 1;
 }
-
-#alphabet li {
-  float:left;
-  margin: 0 10px 10px 0;
-  list-style:none;
-  width:35px;
-  height:30px;
-  padding-top:10px;
-  background:$white;
-  color:$base-color;
-  cursor:pointer;
-  @include corners(5px);
-  border: solid 1px $white;
-    
-    &:hover{
-      background:$base-color;
-      border: solid 1px $white;
-      color:$white;
-    }
-}
-
-#my-word {
-  margin: 0;
-  display: block;
-  padding: 0;
-  display:block;
-}
-
-#my-word li {
-  position: relative;
-  list-style: none;
-  margin: 0;
-  display: inline-block;
-  padding: 0 10px;
-  font-size:1.6em;
-}
-
-.active {
-  @include opacity;
-  cursor:default;
-    
-  &:hover{
-      @include fade;
-      @include opacity;
-    }
-}
-
-#mylives{
-  font-size:1.6em;
-  text-align:center;
-  display:block;
-}
-
-button{
-  @include corners (5px);
-  background:$base-color;
-  color:$white;
-  border: solid 1px $white;
-  text-decoration:none;
-  cursor:pointer;
-  font-size:1.2em;
-  padding:18px 10px;
-  width:180px;
-  margin: 10px;
-  outline: none;
-  
-    &:hover{
-      @include transition;
-      background:$white;
-      border: solid 1px $white;
-      color:$base-color;
-    }
-}
-
-@media (max-width: 767px) {
-  #alphabet {
-  padding:0 0 0 15px;
-}
-  }
-
-  @media (max-width: 480px) {
-  #alphabet {
-  padding:0 0 0 25px;
-}
-  }
