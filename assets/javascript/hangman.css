@@ -1,0 +1,13 @@
+#theheader {
+	text-align: center;
+
+}
+	#theword h4 {
+	display: inline;
+	text-transform: uppercase;
+}
+
+#usedletters h4 {
+	display: inline;
+	text-transform: uppercase;
+}
