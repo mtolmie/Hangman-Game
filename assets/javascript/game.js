@@ -5,32 +5,33 @@
 // populate an array with underscores to help fill in the blanks for the words
   
 
+document.onkeyup = grungeEraSongs;
 
-$(".90-image").on("click",function() {
-
-    // Clicking the button triggers an alert message.
-    alert("Time for 90's grunge hangman");
- });
+    function grungeEraSongs() {
+        alert("Let the Hangman game begin!");
+    }
     
 
-if (gameStarts === chosenWord){
-    alert("Start game!");
-}
 
     var words = [
 
       "soundgarden",
 
-      "pearljam",
-
       "nirvana"
 
     ];
 
+          if (letter === soundgarden) {
+            greeting = "correct letter";
+            console.log(letter);
 
-    var targetNumber = 10;
+        } else{
+            greeting ="incorrect letter";
+        }
 
-  $("#number-to-guess").text(targetNumber);
+            
+
+    var letter = 11;
 
   var counter = 0;
 
@@ -47,6 +48,10 @@ if (gameStarts === chosenWord){
       answerArray[i] = "_";
 
     }
+
+    var soundgarden
+       
+        iselelevenletters: true
 
     var remainingLetters = word.length;
 
@@ -96,11 +101,13 @@ if (gameStarts === chosenWord){
 
     // Show the answer and congratulate the player
 
-    alert(answerArray.join("pearljam");
 
-    alert("Good job! The answer was " + word);
-}
+    alert("Good job! The answer was soundgarden");
+         alert("Good job! The answer was nirvana");
 
-}
+
+          
+
+
 
 
