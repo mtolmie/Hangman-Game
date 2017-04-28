@@ -2,45 +2,35 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title Hangman>
-    </title>
-     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-     <script src="assets/javascript/game.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> 90's Grunge Band Hangman </title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">   
   </head>
 
-
   <body>
-
-
-
-  <header id="masthead">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="container">
-      
-
       <img src="assets/images/90image.jpg" class="auth-image" alt="90image">
-      
-<div class="wrapper">
-   <h1> 90's Grunge Music Hangman Game</h1>
-  
-    <p>Use the alphabet to help you guess the 90's Grunge band </p>
-    <p>Press any key to get started!</p>
-
-    
-
-
-
-<script src="assets/javascript/game.js"></script>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-
-<footer>
-    <div class="container">
-      Copyright &copy; 2017 Michael Tolmie
+      <h1> 90's Grunge Music Hangman Game</h1>
+      <p>Use the alphabet to help you guess the 90's Grunge band </p>
+      <p>Press any key to get started!</p>
+      <form>
+      <p><input type="button" value="New Game" onclick="startGame();"> </p>
+      </form>
+    <span id="curWord">
+    <p>&nbsp;</span> </p>
     </div>
-  </footer>
-
-   </script>
+    <!-- Everything below needs to be on a seperate div -->
+    <!-- We need to create spaces for each word that we are defining for the game -->
+    <div id="word"></div>
+    <!-- We need to show each letter within the word that are not part of the word -->
+    <!-- Letter that is not part of the word woud go elsewhere which is not part of the guess -->
+    <!-- We need to show the number of guesses left. We want to count the number of guesses the player has left -->
+    <!-- We need to show the number of wins -->
+    <footer>
+      <div class="container">
+        Copyright &copy; 2017 Michael Tolmie
+      </div>
+    </footer>
+    <script src="assets/javascript/game.js"></script>
   </body>
 </html>

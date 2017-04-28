@@ -1,0 +1,65 @@
+
+
+<html>
+
+<head>
+<title></title>
+ <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+
+ <img src="assets/images/90image.jpg" class="auth-image" alt="90image">
+      
+<div class="wrapper">
+   <h1> 90's Grunge Music Hangman Game</h1>
+  
+    <p>Use the alphabet to help you guess the 90's Grunge band </p>
+    <p>Press any key to get started!</p>
+
+<form>
+  <p><input type="button" value="New Game" onclick="startGame();"> </p>
+</form>
+<span id="curWord">
+
+<p>&nbsp;</span> </p>
+
+<form name="letters">
+  <p><input type="button" class="letter" onclick="guess(this);" value="A"> <input
+  type="button" class="letter" onclick="guess(this);" value="B"> <input type="button"
+  class="letter" onclick="guess(this);" value="C"> <input type="button" class="letter"
+  onclick="guess(this);" value="D"> <input type="button" class="letter"
+  onclick="guess(this);" value="E"> <input type="button" class="letter"
+  onclick="guess(this);" value="F"> <input type="button" class="letter"
+  onclick="guess(this);" value="G"> <input type="button" class="letter"
+  onclick="guess(this);" value="H"> <input type="button" class="letter"
+  onclick="guess(this);" value="I"> <input type="button" class="letter"
+  onclick="guess(this);" value="J"> <input type="button" class="letter"
+  onclick="guess(this);" value="K"> <input type="button" class="letter"
+  onclick="guess(this);" value="L"> <input type="button" class="letter"
+  onclick="guess(this);" value="M"> <input type="button" class="letter"
+  onclick="guess(this);" value="N"> <input type="button" class="letter"
+  onclick="guess(this);" value="O"> <input type="button" class="letter"
+  onclick="guess(this);" value="P"> <input type="button" class="letter"
+  onclick="guess(this);" value="Q"> <input type="button" class="letter"
+  onclick="guess(this);" value="R"> <input type="button" class="letter"
+  onclick="guess(this);" value="S"> <input type="button" class="letter"
+  onclick="guess(this);" value="T"> <input type="button" class="letter"
+  onclick="guess(this);" value="U"> <input type="button" class="letter"
+  onclick="guess(this);" value="V"> <input type="button" class="letter"
+  onclick="guess(this);" value="W"> <input type="button" class="letter"
+  onclick="guess(this);" value="X"> <input type="button" class="letter"
+  onclick="guess(this);" value="Y"> <input type="button" class="letter"
+  onclick="guess(this);" value="Z"> </p>
+</form>
+
+<p><span class="title">Number of Guesses:</span><span id="numGuesses">&nbsp;</span><br>
+<span class="title">Total Guesses Available:</span><span id="totalGuesses">&nbsp;</span><br>
+<span class="title">Number of Guesses Left:</span><span id="leftGuesses">&nbsp;</span><br>
+<span class="title">Current Score:</span><span id="score">&nbsp;</span><br>
+<span id="score">&nbsp;</span><br>
+<span id="image"></span> </p>
+</body>
+</html>
+
+<script src="assets/javascript/game3.js"></script>
