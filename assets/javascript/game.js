@@ -70,39 +70,8 @@ function checkWin(){
 
             
 
-//     var letter = 11;
 
-//   var counter = 0;
-
-//     // Pick a random word
-
-//     var word = words[Math.floor(Math.random() * words.length)];
-
-//     // Set up the answer array
-
-//     var answerArray = [];
-
-//     for (var i = 0; i < word.length; i++) {
-
-//       answerArray[i] = "_";
-
-//     }
-
-//     var soundgarden
-       
-//         iselelevenletters: true
-
-//     var remainingLetters = word.length;
-
-//     // The game loop
-
-//     while (remainingLetters > 0) {
-
-//       // Show the player their progress
-
-//       alert(answerArray.join(" "));
-
-//       // Get a guess from the player
+//     
 
 //       var guess = prompt("Guess a letter, or click Cancel to stop playing.");
 
