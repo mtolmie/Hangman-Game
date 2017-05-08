@@ -1,121 +1,185 @@
-"use strict";
-var words = [
+
+var wordsList = [
       "soundgarden",
-      "nirvana"
+      "nirvana", "pearljam"
     ];
-var firstWord = words[0];
-console.log(firstWord);
-var firstWordString =  firstWord.split("");
-console.log(firstWordString);
-// var str = "How are you doing today?";
-// var res = str.split(" ");
-var firstWordLength = firstWord.length;
-console.log(firstWordLength);
-for(var i=0; i < words.length; i++) {
-  var band = words[i].length
-  console.log(band);
+var chosenWord = "";
+var lettersInChosenWord = [];
+var numBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongGuesses = [];
+var letterGuessed = "";
+var winCounter = 0;
+var lossCounter = 0;
+var numGuesses = 16;
+function startGame() {
 
+  // Reset the guesses back to 0.
+  numGuesses = 16;
+
+  // Solution chosen randomly from wordList.
+  chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+
+  // The word is broken into individual letters.
+  lettersInChosenWord = chosenWord.split("");
+
+  // We count the number of letters in the word.
+  numBlanks = lettersInChosenWord.length;
+
+  // We print the solution in console (for testing).
+  console.log(chosenWord);
+
+  // CRITICAL LINE
+  // Here we *reset* the guess and success array at each round.
+  blanksAndSuccesses = [];
+
+  // CRITICAL LINE
+  // Here we *reset* the wrong guesses from the previous round.
+  wrongGuesses = [];
+
+  // Fill up the blanksAndSuccesses list with appropriate number of blanks.
+  // This is based on number of letters in solution.
+  for (var i = 0; i < numBlanks; i++) {
+    blanksAndSuccesses.push("_");
+  }
+
+  // Print the initial blanks in console.
+  console.log(blanksAndSuccesses);
+
+  // Reprints the guessesLeft to 9.
+  document.getElementById("guesses-left").innerHTML = numGuesses;
+
+  // Prints the blanks at the beginning of each round in the HTML.
+  document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
+
+  // Clears the wrong guesses from the previous round.
+  document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 }
 
-// Updates gameLetters in html
-function outputGameLetters(){
-  document.getElementById("gameLetters").innerHTML = words(gameLetters);
-}
+// checkLetters() function
+// It's where we will do all of the comparisons for matches.
+// Again, it's not being called here. It's just being made for future use.
+function checkLetters(letter) {
 
-// Updates usedLetters in html
-function outputUsedLetters(){
-  document.getElementById("usedLetters").innerHTML = words(usedLetters);
-}
+  // This boolean will be toggled based on whether or not
+  // a user letter is found anywhere in the word.
+  var letterInWord = false;
 
-// Has the user won?
-function checkWin(){
-  for(var i = 0; i < gameLetters.length; i++){
-    if(gameLetters[i] === "_"){
-      return false; // User still has letters to guess
+  // Check if a letter exists inside the array at all.
+  for (var i = 0; i < numBlanks; i++) {
+
+    if (chosenWord[i] === letter) {
+
+      // If the letter exists then toggle this boolean to true.
+      // This will be used in the next step.
+      letterInWord = true;
     }
   }
-  return true; // All letters have been guessed
+
+  // If the letter exists somewhere in the word,
+  // then figure out exactly where (which indices).
+  if (letterInWord) {
+
+    // Loop through the word
+    for (var j = 0; j < numBlanks; j++) {
+
+      // Populate the blanksAndSuccesses with every instance of the letter.
+      if (chosenWord[j] === letter) {
+
+        // Here we set specific blank spaces to equal the correct letter
+        // when there is a match.
+        blanksAndSuccesses[j] = letter;
+      }
+    }
+
+    // Log the current blanks and successes for testing.
+    console.log(blanksAndSuccesses);
+  }
+
+  // If the letter doesn't exist at all...
+  else {
+
+    // Then we add the letter to the list of wrong letters.
+    wrongGuesses.push(letter);
+
+    // We also subtract one of the guesses.
+    numGuesses--;
+
+  }
+
 }
 
-// We need to have the correct number of _ per each div... the div we created, first div is called "word"
+// roundComplete() function
+// Here we will have all of the code that needs to be run after each guess is made.
+function roundComplete() {
 
-// div word pseudo code idea to create spaces for each word each time a letter is guessed
+  // First, log an initial status update in the console
+  // telling us how many wins, losses, and guesses are left.
+  console.log("WinCount: " + winCounter + " | LossCount: " + lossCounter + " | NumGuesses: " + numGuesses);
 
+  // HTML UPDATES
+  // ============
 
+  // Update the HTML to reflect the new number of guesses.
+  document.getElementById("guesses-left").innerHTML = numGuesses;
 
-// // make an array of words that can be chosen for the Hangman game
-// //how do I select different words?
-// // how many letters are in each word?
-// // how many guesses are involved for each word?
-// // populate an array with underscores to help fill in the blanks for the words
-  
+  // This will print the array of guesses and blanks onto the page.
+  document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
 
-// document.onkeyup = grungeEraSongs;
+  // This will print the wrong guesses onto the page.
+  document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
-//     function grungeEraSongs() {
-//         alert("Let the Hangman game begin!");
-//     }
-    
+  // If our hangman string equals the solution.
+  // (meaning that we guessed all the letters to match the solution)...
+  if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
 
+    // Add to the win counter
+    winCounter++;
 
-//    
+    // Give the user an alert
+    alert("You win!");
 
-//           if (letter === soundgarden) {
-//             greeting = "correct letter";
-//             console.log(letter);
+    // Update the win counter in the HTML
+    document.getElementById("win-counter").innerHTML = winCounter;
 
-//         } else{
-//             greeting ="incorrect letter";
-//         }
+    // Restart the game
+    startGame();
+  }
 
-            
+  // If we've run out of guesses
+  else if (numGuesses === 0) {
 
+    // Add to the loss counter
+    lossCounter++;
 
-//     
+    // Give the user an alert
+    alert("You lose");
 
-//       var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+    // Update the loss counter in the HTML
+    document.getElementById("loss-counter").innerHTML = lossCounter;
 
-//       if (guess === null) {
+    // Restart the game
+    startGame();
 
-//         // Exit the game loop
+  }
 
-//         break;
+}
 
-//       } else if (guess.length !== 1) {
+// MAIN PROCESS (THIS IS THE CODE THAT CONTROLS WHAT IS ACTUALLY RUN)
+// ==================================================================
 
-//         alert("Please enter a single letter.");
+// Starts the Game by running the startGame() function
+startGame();
 
-//       } else {
+// Then initiates the function for capturing key clicks.
+document.onkeyup = function(event) {
 
-//         // Update the game state with the guess
+  // Converts all key clicks to lowercase letters.
+  letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
 
-//         for (var j = 0; j < word.length; j++) {
+  // Runs the code to check for correct guesses.
+  checkLetters(letterGuessed);
 
-//           if (word[j] === guess) {
-
-//             answerArray[j] = guess;
-
-//             remainingLetters--;
-
-//           }
-
-//         }
-
-//       }
-
-//     // The end of the game loop
-
-//     }
-
-//     // Show the answer and congratulate the player
-
-
-//     alert("Good job! The answer was soundgarden");
-//          alert("Good job! The answer was nirvana");
-
-
-          
-
-
-
-
+  // Runs the code that ends each round.
+  roundComplete();
+};
